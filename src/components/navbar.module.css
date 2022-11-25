@@ -1,0 +1,32 @@
+.container {
+  padding: 32px;
+}
+.nav_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav_container > h1 {
+  color: #333;
+  font-size: 1.5625rem;
+}
+
+.icon_container {
+  position: relative;
+}
+
+.nav_icon {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.icon_qty {
+  position: absolute;
+  top: -5px;
+}
+@media screen and (min-width: 600px) {
+  .container {
+    padding: 32px 64px 32px 64px;
+  }
+}
