@@ -6,17 +6,15 @@ import styles from './cart.module.css'
 
 function Cart() {
   const { state, dispatch } = StoreState()
-  console.log(typeof state.cart)
   const fetchStore = async () => {
     try {
       const storeData = await axios.get(
         'https://fakestoreapi.com/products?limit=10'
       )
       dispatch({
-        type: 'ADD_TO_CART',
-        payload: { cart: storeData.data },
+        type: 'ADDED_PRODUCTS',
+        payload: storeData.data,
       })
-      // console.log(storeData.data)
     } catch (err) {
       console.log(err.message)
     }
@@ -29,8 +27,10 @@ function Cart() {
   return (
     <>
       <div className={styles.cart_container}>
-        {state.cart && state.cart.length > 0
-          ? state.cart.map((item) => console.log(item.id))
+        {state.products && state.products.length > 0
+          ? state.products.map((item, index) => (
+              <ItemCart key={index} item={item} />
+            ))
           : null}
       </div>
     </>
